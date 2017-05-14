@@ -52,5 +52,33 @@ if(!file.exists("getdata-projectfiles-UCI HAR Dataset.zip")) {
     unlink(tmp)
 }
 
-data <- read_csv("activity.csv")
+activity <- read_csv("activity.csv")
 ```
+
+## Steps per day
+
+We can summarize the activity to plot a histogram of the number of steps in each day and grab the mean and median steps per day:
+```{r} 
+steps_day <- activity %>%
+    group_by(date) %>%
+    summarize(total_steps = sum(steps, na.rm = TRUE))
+ggplot(steps_day, aes(x = total_steps)) + 
+    geom_histogram(binwidth = 2000) +
+    xlab('Number of steps') +
+    ylab('Count') +
+    ggtitle('Total Steps per Day') 
+
+steps_mean <- mean(steps_day$total_steps)
+steps_median <- median(steps_day$total_steps)
+```
+
+The `mean` number of steps per day is `r steps_mean` and the `median` is `r steps_median`.
+
+We can also plot of time series of steps per day:
+
+```{r}
+ggplot(steps_day, aes(x = date, y = total_steps)) +
+    geom_line() +
+    xlab('Date') +
+    ylab('Number of Steps') +
+    ggtitle('Number of steps in a day')
