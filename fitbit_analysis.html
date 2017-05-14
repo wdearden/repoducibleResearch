@@ -124,7 +124,48 @@ $(document).ready(function () {
 </div>
 
 
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>This document is the result of the first project in the Johns Hopkins Coursera “Reproducible Research”. The purpose of this project is to demonstrate:</p>
+<ul>
+<li>loading and preprocessing data</li>
+<li>imputing missing values</li>
+<li>visualizing data</li>
+<li>answering research questions using data</li>
+<li>dynamic documents using <code>Knitr</code></li>
+</ul>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.</p>
+<ul>
+<li>Dataset: <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip">Activity monitoring data</a> [52K]</li>
+</ul>
+<p>The variables included in this dataset are:</p>
+<ul>
+<li><p><strong>steps</strong>: Number of steps taking in a 5-minute interval (missing values are coded as <code>NA</code>)</p></li>
+<li><p><strong>date</strong>: The date on which the measurement was taken in YYYY-MM-DD format</p></li>
+<li><p><strong>interval</strong>: Identifier for the 5-minute interval in which measurement was taken</p></li>
+</ul>
+<p>The dataset is stored in a comma-separated-value (CSV) file and there are a total of 17,568 observations in this dataset.</p>
+</div>
+<div id="loading-and-preprocessing-the-data" class="section level2">
+<h2>Loading and preprocessing the data</h2>
+<p>First, we load the packages necessary to complete this project:</p>
+<pre class="r"><code>library(ggplot2)
+library(magrittr)
+library(dplyr)
+library(readr)</code></pre>
+<p>Download, unzip and load data into data frame <code>data</code>.</p>
+<pre class="r"><code>if(!file.exists(&quot;getdata-projectfiles-UCI HAR Dataset.zip&quot;)) {
+    tmp &lt;- tempfile()
+    download.file(&quot;http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip&quot;, tmp)
+    unzip(tmp)
+    unlink(tmp)
+}
 
+data &lt;- read_csv(&quot;activity.csv&quot;)</code></pre>
+</div>
 
 
 
