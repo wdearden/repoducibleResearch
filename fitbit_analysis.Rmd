@@ -1,0 +1,5 @@
+---
+title: "Analyzing Personal Activity Monitoring Data"
+author: "William Dearden"
+date: "May 14, 2017"
+---
